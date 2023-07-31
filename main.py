@@ -1,3 +1,4 @@
+from Django import Django, CI
 import openai
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
