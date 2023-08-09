@@ -1,0 +1,166 @@
+[
+    {
+        "label": "Django",
+        "importPath": "Django",
+        "description": "Django",
+        "isExtraImport": true,
+        "detail": "Django",
+        "documentation": {}
+    },
+    {
+        "label": "CI",
+        "importPath": "Django",
+        "description": "Django",
+        "isExtraImport": true,
+        "detail": "Django",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "Updater",
+        "importPath": "telegram.ext",
+        "description": "telegram.ext",
+        "isExtraImport": true,
+        "detail": "telegram.ext",
+        "documentation": {}
+    },
+    {
+        "label": "CommandHandler",
+        "importPath": "telegram.ext",
+        "description": "telegram.ext",
+        "isExtraImport": true,
+        "detail": "telegram.ext",
+        "documentation": {}
+    },
+    {
+        "label": "MessageHandler",
+        "importPath": "telegram.ext",
+        "description": "telegram.ext",
+        "isExtraImport": true,
+        "detail": "telegram.ext",
+        "documentation": {}
+    },
+    {
+        "label": "Filters",
+        "importPath": "telegram.ext",
+        "description": "telegram.ext",
+        "isExtraImport": true,
+        "detail": "telegram.ext",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "start",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def start(update, context):\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Hello! Welcome to the intelligent bot.\")\ndef help_command(update, context):\n    commands = [\n        \"/start - Start the chat bot\",\n        \"/help - Show a list of all commands\",\n        \"/new - Start a new chat session\",\n        \"/mode - Select chat mode\",\n        \"/retry - Regenerate response for the previous query\"\n    ]",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "help_command",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def help_command(update, context):\n    commands = [\n        \"/start - Start the chat bot\",\n        \"/help - Show a list of all commands\",\n        \"/new - Start a new chat session\",\n        \"/mode - Select chat mode\",\n        \"/retry - Regenerate response for the previous query\"\n    ]\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"\\n\".join(commands))\ndef new_chat(update, context):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "new_chat",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def new_chat(update, context):\n    # Logic to handle starting a new chat session\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Starting a new chat session...\")\ndef select_mode(update, context):\n    # Logic to handle selecting chat mode\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Selecting chat mode...\")\ndef retry(update, context):\n    # Logic to handle regenerating response for previous query\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Regenerating response for the previous query...\")\ndef echo(update, context):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "select_mode",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def select_mode(update, context):\n    # Logic to handle selecting chat mode\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Selecting chat mode...\")\ndef retry(update, context):\n    # Logic to handle regenerating response for previous query\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Regenerating response for the previous query...\")\ndef echo(update, context):\n    # Use OpenAI API to generate a response\n    response = openai.Completion.create(\n        engine='davinci',",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "retry",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def retry(update, context):\n    # Logic to handle regenerating response for previous query\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Regenerating response for the previous query...\")\ndef echo(update, context):\n    # Use OpenAI API to generate a response\n    response = openai.Completion.create(\n        engine='davinci',\n        prompt=update.message.text,\n        max_tokens=50,\n        n=1,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "echo",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def echo(update, context):\n    # Use OpenAI API to generate a response\n    response = openai.Completion.create(\n        engine='davinci',\n        prompt=update.message.text,\n        max_tokens=50,\n        n=1,\n        stop=None,\n        temperature=0.7\n    )",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "error",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def error(update, context):\n    logger.warning('Update \"%s\" caused error \"%s\"', update, context.error)\ndef main():\n    # Create an instance of Updater with your bot token.\n    updater = Updater(token=os.getenv(\"BOT_TOKEN\"), use_context=True)\n    # Get the dispatcher.\n    dp = updater.dispatcher\n    # Set command handler for the /start command.\n    dp.add_handler(CommandHandler(\"start\", start))\n    # Set command handler for the /help command.",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    # Create an instance of Updater with your bot token.\n    updater = Updater(token=os.getenv(\"BOT_TOKEN\"), use_context=True)\n    # Get the dispatcher.\n    dp = updater.dispatcher\n    # Set command handler for the /start command.\n    dp.add_handler(CommandHandler(\"start\", start))\n    # Set command handler for the /help command.\n    dp.add_handler(CommandHandler(\"help\", help_command))\n    # Set command handler for the /new command.",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "openai.api_key",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "openai.api_key = os.getenv(\"OPENAI_API_KEY\")\nopenai.organization = 'YOUR_ORGANIZATION_ID'\ndef start(update, context):\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Hello! Welcome to the intelligent bot.\")\ndef help_command(update, context):\n    commands = [\n        \"/start - Start the chat bot\",\n        \"/help - Show a list of all commands\",\n        \"/new - Start a new chat session\",\n        \"/mode - Select chat mode\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "openai.organization",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "openai.organization = 'YOUR_ORGANIZATION_ID'\ndef start(update, context):\n    context.bot.send_message(chat_id=update.effective_chat.id, text=\"Hello! Welcome to the intelligent bot.\")\ndef help_command(update, context):\n    commands = [\n        \"/start - Start the chat bot\",\n        \"/help - Show a list of all commands\",\n        \"/new - Start a new chat session\",\n        \"/mode - Select chat mode\",\n        \"/retry - Regenerate response for the previous query\"",
+        "detail": "main",
+        "documentation": {}
+    }
+]
